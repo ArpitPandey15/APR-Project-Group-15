@@ -1,61 +1,68 @@
-Sequential Data Classification – RNN, LSTM & GRU
+# Sequential Data Classification – RNN, LSTM & GRU
 
-This project builds and compares RNN, LSTM, and GRU models on two sequential datasets:
+This project compares Recurrent Neural Network architectures — **RNN**, **LSTM**, and **GRU** — on two sequential datasets:
 
-Handwritten Character Stroke Sequences
+1. **Handwritten Character Stroke Sequences**
+2. **Hindi CV Speech MFCC Sequences**
 
-Hindi CV Speech MFCC Sequences
+The goal is to identify the best-performing recurrent model for each dataset.
 
-The objective is to identify the best recurrent architecture for each dataset.
+---
 
-📦 Datasets
-1. Handwriting Dataset
+## 📦 Datasets
 
-5 classes of Kannada/Telugu characters
+### 1. Handwriting Dataset
+- 5 Kannada/Telugu character classes  
+- Each sample is a sequence of `(x, y)` coordinates  
+- Variable sequence lengths  
 
-Each sample → sequence of (x, y) coordinates
+### 2. MFCC CV Speech Dataset
+- 5 Hindi Consonant-Vowel (CV) classes  
+- Each sample is a sequence of **39-dimensional MFCC features**  
+- Variable-length audio-derived sequences  
 
-Variable sequence lengths
+---
 
-2. MFCC CV Speech Dataset
+## 🔧 Methods & Hyperparameters
 
-5 Hindi CV classes
+- Models used: **RNN**, **LSTM**, **GRU**
+- Tested layers: `1`, `2`
+- Hidden units: `64`, `128`
+- Optimizer: **Adam (lr=0.001)**
+- Loss: **CrossEntropy**
+- Early stopping: Convergence threshold of `1e-4` change in epoch loss
 
-Each sample → sequence of 39-dim MFCC vectors
+---
 
-Variable sequence lengths
+## 🧠 Best Model Results
 
-🔧 Methods & Hyperparameters
+| Dataset | Best Model |
+|--------|------------|
+| Handwriting | **LSTM — 1 layer, 128 hidden units** |
+| MFCC Speech | **GRU — 2 layers, 128 hidden units** |
 
-Models: RNN, LSTM, GRU
+Accuracy curves and confusion matrices for these models are included in the notebook and report.
 
-Layers: 1, 2
+---
 
-Hidden Units: 64, 128
+## 🏁 Conclusion
 
-Optimizer: Adam (0.001)
+- **LSTM** handles smooth coordinate-based sequences effectively, giving best results on handwriting data.  
+- **GRU** is computationally efficient and performs best on MFCC speech features.  
+- Hyperparameter tuning and early stopping significantly improve overall accuracy.
 
-Loss: CrossEntropy
+---
 
-Early stopping: Loss change < 1e-4
+## 👥 Contributors
 
-🧠 Best Models
-Dataset	Best Model
-Handwriting	LSTM (1 layer, 128 hidden)
-MFCC Speech	GRU (2 layers, 128 hidden)
+- Arpit Pandey  
+- Sooraj Veer R  
+- Chinmay Bhat  
+- Satish Kumar  
+- Sujay Das  
+- Ronit Datta  
+- Anmol Kashyap  
+- Gavinolla Abhishek Reddy  
+- Ayush Kumar
 
-Plots (accuracy + confusion matrix) for the best models are included in the notebook.
-
-🏁 Conclusion
-
-LSTM performs best for smooth, continuous coordinate sequences.
-
-GRU performs best for MFCC speech features due to efficiency and fast temporal modeling.
-
-Hyperparameter tuning significantly impacts model performance.
-
-👥 Contributors
-
-Arpit Pandey, Sooraj Veer R, Chinmay Bhat, Satish Kumar,
-Sujay Das, Ronit Datta, Anmol Kashyap,
-Gavinolla Abhishek Reddy, Ayush Kumar
+---
